@@ -1,0 +1,34 @@
+[language-server.oxc]
+command = "oxlint"
+args =  ["--lsp-server"]
+
+[[language]]
+name = "typescript"
+language-servers = [ "oxc", "typescript-language-server" ]
+formatter = { command = "oxfmt", args = ["--stdin-filepath", "dummy.ts"] }
+auto-format = true
+
+[[language]]
+name = "javascript"
+language-servers = [ "oxc", "typescript-language-server" ]
+formatter = { command = "oxfmt", args = ["--stdin-filepath", "dummy.js"] }
+auto-format = true
+
+[[language]]
+name = "json"
+formatter = { command = "oxfmt", args = ["--stdin-filepath", "dummy.json"] }
+
+[[language]]
+name = "c"
+auto-format = true
+formatter = { command = "clang-format", args = ["--style=file"]}
+
+[language-server.ruff]
+command = "ruff"
+args = ["server"]
+
+[[language]]
+name = "python"
+language-servers = ["ruff"]
+auto-format = true
+
