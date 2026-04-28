@@ -2,6 +2,10 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
+function fish_user_keybindings
+    bind ctrl-h backward-kill-word
+end
+
 # PATHs & Environment Setup
 fish_add_path ~/.local/bin ~/bin
 fish_add_path ~/.deno/bin
