@@ -13,7 +13,7 @@ fish_add_path ~/.cargo/bin
 fish_add_path ~/.vite-plus/bin
 
 # Environment Variables
-set -x EDITOR hx
+set -x PAGER bat --plain --paging=always
 
 # Discord Bridge
 if not pgrep -f discord-ipc-bridge >/dev/null
