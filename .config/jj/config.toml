@@ -1,0 +1,9 @@
+#:schema https://docs.jj-vcs.dev/latest/config-schema.json
+
+[ui]
+default-command = "log"
+editor = "helix"
+
+[user]
+name = "Euan Jed Tabamo"
+email = "euan.tabamo@gmail.com"
