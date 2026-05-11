@@ -15,6 +15,10 @@ fish_add_path ~/.vite-plus/bin
 # Environment Variables
 set -x PAGER bat --plain --paging=always
 
+# Abbreviations
+abbr -a sudo sudo-rs
+abbr -a hx helix
+
 # Discord Bridge
 if not pgrep -f discord-ipc-bridge >/dev/null
     ~/scripts/discord-ipc-bridge.sh &
