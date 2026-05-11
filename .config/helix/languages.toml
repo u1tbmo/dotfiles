@@ -1,6 +1,4 @@
-[language-server.oxc]
-command = "oxlint"
-args =  ["--lsp-server"]
+# --- Typescript/JavaScript
 
 [[language]]
 name = "typescript"
@@ -18,17 +16,59 @@ auto-format = true
 name = "json"
 formatter = { command = "oxfmt", args = ["--stdin-filepath", "dummy.json"] }
 
+[language-server.oxc]
+command = "oxlint"
+args =  ["--lsp-server"]
+
+# --- C
+
 [[language]]
 name = "c"
 auto-format = true
 formatter = { command = "clang-format", args = ["--style=file"]}
 
-[language-server.ruff]
-command = "ruff"
-args = ["server"]
+# --- Python
 
 [[language]]
 name = "python"
 language-servers = ["ruff"]
 auto-format = true
 
+[language-server.ruff]
+command = "ruff"
+args = ["server"]
+
+# --- LaTeX
+
+[[language]]
+name = "latex"
+language-servers = [ "texlab" , "ltex-ls-plus" ]
+
+[language-server.ltex]
+command = "ltex-ls-plus"
+
+[language-server.ltex.config.ltex.dictionary]
+"en-US" = ["ewwe","flaberrasted"]
+
+[language-server.texlab]
+command = "texlab"
+
+[language-server.texlab.config.texlab.build]
+onSave = true
+forwardSearchAfter = true
+ executable = "latexmk"
+ args = [
+  "-pdf",
+  "-interaction=nonstopmode",
+  "-synctex=1",
+  "-shell-escape",
+  "%f"
+  ]
+
+[language-server.texlab.config.texlab.forwardSearch]
+executable = "zathura"
+args = [ "--synctex-forward", "%l:%c:%f", "%p" ]
+
+[language-server.texlab.config.texlab.chktex]
+onOpenAndSave = true
+onEdit = true
