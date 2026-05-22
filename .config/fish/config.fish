@@ -17,24 +17,26 @@ set -x PAGER bat --plain --paging=always
 
 # Abbreviations
 abbr -a sudo sudo-rs
-abbr -a hx helix
 
 # Discord Bridge
 if not pgrep -f discord-ipc-bridge >/dev/null
     ~/scripts/discord-ipc-bridge.sh &
 end
 
-# Completions
+## Programs
 
-COMPLETE=fish jj | source
+if type -q mise
+    mise activate fish | source
+end
 
-# Programs
+if type -q fzf
+    fzf --fish | source
+end
 
 if type -q starship
     starship init fish | source
 end
 
-# Zoxide
 if type -q zoxide
     zoxide init fish | source
 end

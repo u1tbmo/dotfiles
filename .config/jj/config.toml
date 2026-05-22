@@ -2,7 +2,7 @@
 
 [ui]
 default-command = "log"
-editor = "helix"
+editor = "hx"
 
 [user]
 name = "Euan Jed Tabamo"
