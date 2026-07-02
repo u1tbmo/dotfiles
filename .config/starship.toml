@@ -1,42 +1,50 @@
-format = """
-$battery\
-$username\
-$hostname\
-$directory\
-$git_branch\
-$git_state\
-$git_status\
-$cmd_duration\
-$line_break\
-$character"""
+# prezto.toml
+add_newline = false
 
-[directory]
-read_only = " "
+# A minimal left prompt
+format = """$python$directory$character"""
 
-[battery]
-full_symbol = "•"
-charging_symbol = "⇡"
-discharging_symbol = "⇣"
+# move the rest of the prompt to the right
+right_format = """$status$all"""
+
+[character]
+success_symbol = "[❯](red)[❯](yellow)[❯](green)"
+error_symbol = "[❯](red)[❯](yellow)[❯](green)"
+vicmd_symbol = "[❮](green)[❮](yellow)[❮](red)"
 
 [git_branch]
-format = "[$branch]($style)"
-style = "bright-black"
+format = '[$branch]($style) '
+style = 'bold green'
+
+[python]
+format = '\($virtualenv\) '
 
 [git_status]
-format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](bright-black) ($ahead_behind$stashed)]($style)"
-style = "cyan"
-conflicted = "​"
-untracked = "​"
-modified = "​"
-staged = "​"
-renamed = "​"
-deleted = "​"
-stashed = "≡"
+format = '$all_status$ahead_behind '
+ahead = '[⬆](bold purple) '
+behind = '[⬇](bold purple) '
+staged = '[✚](green) '
+deleted = '[✖](red) '
+renamed = '[➜](purple) '
+stashed = '[✭](cyan) '
+untracked = '[◼](white) '
+modified = '[✱](blue) '
+conflicted = '[═](yellow) '
+diverged = '⇕ '
+up_to_date = ''
 
-[git_state]
-format = '\([$state( $progress_current/$progress_total)]($style)\) '
-style = "bright-black"
+[directory]
+style = "blue"
+truncation_length = 1
+truncation_symbol = ""
+fish_style_pwd_dir_length = 1
 
 [cmd_duration]
-format = "[$duration]($style) "
-style = "yellow"
+format = '[$duration]($style) '
+
+[line_break]
+disabled = true
+
+[status]
+disabled = false
+symbol = '✘ '

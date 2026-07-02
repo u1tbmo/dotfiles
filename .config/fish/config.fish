@@ -1,8 +1,4 @@
 if status is-interactive
-    # Commands to run in interactive sessions can go here
-end
-
-function fish_user_keybindings
     bind ctrl-h backward-kill-word
 end
 
@@ -13,7 +9,9 @@ fish_add_path ~/.cargo/bin
 fish_add_path ~/.vite-plus/bin
 
 # Environment Variables
-set -x PAGER bat --plain --paging=always
+set -Ux PAGER bat --plain --paging=always
+set -Ux EDITOR hx
+set -Ux VISUAL hx
 
 # Abbreviations
 abbr -a sudo sudo-rs
@@ -40,3 +38,10 @@ end
 if type -q zoxide
     zoxide init fish | source
 end
+
+# pnpm
+set -gx PNPM_HOME "/home/u1tbmo/.local/share/pnpm"
+if not string match -q -- "$PNPM_HOME/bin" $PATH
+    set -gx PATH "$PNPM_HOME/bin" $PATH
+end
+# pnpm end

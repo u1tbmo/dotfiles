@@ -1,5 +1,47 @@
 # --- Typescript/JavaScript
 
+[language-server.astro-ls]
+command = "astro-ls"
+args = ["--stdio"]
+config = { typescript = { tsdk = "~/.local/share/pnpm/store/v11/links/@/typescript/6.0.3/4c7d5dda06e5f9372ccbd4cadc34d29e5e1e0f616e2adf0b32c5b6b3f909eb4c/node_modules/typescript/lib" }, environment = "node" }
+
+[language-server.emmet-lsp]
+command = "emmet-language-server"
+args = ["--stdio"]
+
+[language-server.emmet-lsp.config]
+includeLanguages = {"astro" = "html"}
+
+[language-server.tailwindcss-ls]
+command = "tailwindcss-language-server"
+args = ["--stdio"]
+config = { userLanguages = { astro = "html" } }
+
+[language-server.oxc]
+command = "oxlint"
+args =  ["--lsp-server"]
+
+
+[[language]]
+name = "html"
+language-servers = [ "vscode-html-language-server", "tailwindcss-ls" ]
+
+[[language]]
+name = "css"
+language-servers = [ "vscode-css-language-server", "tailwindcss-ls" ]
+
+[[language]]
+name = "jsx"
+language-servers = [ "oxc", "typescript-language-server", "tailwindcss-ls" ]
+formatter = { command = "oxfmt", args = ["--stdin-filepath", "dummy.ts"] }
+auto-format = true
+
+[[language]]
+name = "tsx"
+language-servers = [ "oxc", "typescript-language-server", "tailwindcss-ls" ]
+formatter = { command = "oxfmt", args = ["--stdin-filepath", "dummy.ts"] }
+auto-format = true
+
 [[language]]
 name = "typescript"
 language-servers = [ "oxc", "typescript-language-server" ]
@@ -16,9 +58,25 @@ auto-format = true
 name = "json"
 formatter = { command = "oxfmt", args = ["--stdin-filepath", "dummy.json"] }
 
-[language-server.oxc]
-command = "oxlint"
-args =  ["--lsp-server"]
+[[language]]
+name = "astro"
+scope = "source.astro"
+injection-regex = "astro"
+file-types = ["astro"]
+roots = ["package.json", "astro.config.mjs"]
+language-servers = ["astro-ls", "emmet-lsp", "tailwindcss-ls"]
+auto-format = true
+
+# --- Rust
+
+[language-server.rust-analyzer.config]
+checkOnSave = { command = "clippy" }
+procMacro = { enable = true }
+cargo = { loadOutDirsFromCheck = true }
+
+[[language]]
+name = "rust"
+auto-format = true
 
 # --- C
 
@@ -72,3 +130,4 @@ args = [ "--synctex-forward", "%l:%c:%f", "%p" ]
 [language-server.texlab.config.texlab.chktex]
 onOpenAndSave = true
 onEdit = true
+
