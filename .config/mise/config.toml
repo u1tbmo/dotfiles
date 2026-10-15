@@ -1,3 +1,7 @@
+[settings]
+minimum_release_age = "0s"
+auto_update = true
+
 [tools]
 cargo-binstall = "latest"
 github-cli = "latest"
@@ -14,13 +18,12 @@ yazi = "latest"
 zellij = "latest"
 zoxide = "latest"
 deno = "latest"
-pnpm = "latest"
-aube = "latest"
 usage = "latest"
 fzf = "latest"
-vp = "latest"
 bun = "latest"
 copilot = "latest"
 docker-cli = "latest"
 nub = "latest"
 node = "latest"
+codex = "latest"
+pnpm = "latest"

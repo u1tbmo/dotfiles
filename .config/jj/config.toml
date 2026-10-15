@@ -2,7 +2,7 @@
 
 [ui]
 default-command = "log"
-editor = "hx"
+editor = "ms"
 
 [user]
 name = "Euan Jed Tabamo"

@@ -10,8 +10,8 @@ fish_add_path ~/.vite-plus/bin
 
 # Environment Variables
 set -Ux PAGER bat --plain --paging=always
-set -Ux EDITOR hx
-set -Ux VISUAL hx
+set -Ux EDITOR ms
+set -Ux VISUAL ms
 
 # Abbreviations
 abbr -a sudo sudo-rs
