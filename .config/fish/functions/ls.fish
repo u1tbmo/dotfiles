@@ -1,3 +1,3 @@
-function ls --description 'alias ls=uu-coreutils ls'
-    uu-coreutils ls $argv
+function ls --wraps=eza --description 'alias ls=eza'
+    eza $argv
 end

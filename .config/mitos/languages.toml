@@ -89,43 +89,53 @@ formatter = { command = "clang-format", args = ["--style=file"]}
 
 [[language]]
 name = "python"
-language-servers = ["ruff"]
+language-servers = ["basedpyright", "ruff"]
 auto-format = true
+
+[language-server.basedpyright]
+command = "basedpyright-langserver"
+args = ["--stdio"]
 
 [language-server.ruff]
 command = "ruff"
 args = ["server"]
 
+# --- Typst
+
+[[language]]
+name = "typst"
+language-servers = ["tinymist"]
+
+[language-server.tinymist]
+command = "tinymist"
+config = {
+ exportPdf = "onSave",
+ outputPath = "$root/$name",
+ preview.background.enabled = true,
+ preview.background.args = ["--data-plane-host=127.0.0.1:23635", "--invert-colors=never"]
+}
+
 # --- LaTeX
 
 [[language]]
 name = "latex"
-language-servers = [ "texlab" , "ltex-ls-plus" ]
-
-[language-server.ltex]
-command = "ltex-ls-plus"
-
-[language-server.ltex.config.ltex.dictionary]
-"en-US" = ["ewwe","flaberrasted"]
+language-servers = [ "texlab" ]
 
 [language-server.texlab]
 command = "texlab"
 
 [language-server.texlab.config.texlab.build]
 onSave = true
-forwardSearchAfter = true
- executable = "latexmk"
- args = [
-  "-pdf",
-  "-interaction=nonstopmode",
-  "-synctex=1",
-  "-shell-escape",
-  "%f"
-  ]
-
-[language-server.texlab.config.texlab.forwardSearch]
-executable = "zathura"
-args = [ "--synctex-forward", "%l:%c:%f", "%p" ]
+forwardSearchAfter = false
+executable = "tectonic"
+args = [
+ "-X",
+ "compile",
+ "%f",
+ "--untrusted",
+ "--synctex",
+ "--keep-logs",
+]
 
 [language-server.texlab.config.texlab.chktex]
 onOpenAndSave = true

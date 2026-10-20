@@ -1,3 +1,3 @@
 function fish_greeting
-    echo "Welcome back!"
+    fastfetch --disable-linewrap true
 end

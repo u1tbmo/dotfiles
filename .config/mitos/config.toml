@@ -1,11 +1,13 @@
-theme =  "ayu_dark"
+theme =  "ayu_dark_transparent"
 
 [editor]
 line-number = "relative"
+cursorline = true
 bufferline = "multiple"
+color-modes = true
 
 [editor.cursor-shape]
-insert = "bar"
 normal = "block"
+insert = "bar"
 select = "underline"
 
